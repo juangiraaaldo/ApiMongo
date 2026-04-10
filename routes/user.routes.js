@@ -11,6 +11,8 @@ const router = Router();
 //obetener todos los usuarios
 router.get('/', getUsers);
 
+router.get('/:id', getUserById);
+
 //Crear un nuevo usuario
 router.post('/', createUser);
 
