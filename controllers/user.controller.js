@@ -12,12 +12,15 @@ export const getUsers = async (req, res) => {
 
 // Crear un nuevo usuario
 export const createUser = async (req, res) => {
-  const { nombre, correo, password } = req.body;
   try {
+    console.log('Body recibido:', req.body);
+    const { nombre, correo, password } = req.body;
     const newUser = new User({ nombre, correo, password });
-    await newUser.save();
-    res.status(201).json(newUser);
+    const saved = await newUser.save();
+    console.log('Usuario guardado:', saved);
+    res.status(201).json(saved);
   } catch (error) {
+    console.log('Error:', error.message);
     res.status(400).json({ message: error.message });
   }
 };
