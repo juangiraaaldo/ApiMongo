@@ -25,11 +25,11 @@ export const createUser = async (req, res) => {
 // Actualizar un usuario
 export const updateUser = async (req, res) => {
   const { id } = req.params;
-  const { nombre, correo } = req.body;
+  const { nombre, correo, password } = req.body;
   try {
     const updated = await User.findByIdAndUpdate(
       id,
-      { nombre, correo },
+      { nombre, correo, password },
       { new: true }
     );
     if (!updated) return res.status(404).json({ message: 'Usuario no encontrado' });
